@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 package akka.persistence.jdbc.dao.bytea
 
 import akka.persistence.jdbc.config.JournalTableConfiguration
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 class ReadJournalQueries(val profile: JdbcProfile, override val journalTableCfg: JournalTableConfiguration) extends ReadJournalTables {
   import ReadJournalTables._

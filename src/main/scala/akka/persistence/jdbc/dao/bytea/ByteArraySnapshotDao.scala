@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import akka.persistence.jdbc.dao.SnapshotDao
 import akka.persistence.jdbc.dao.bytea.SnapshotTables.SnapshotRow
 import akka.persistence.jdbc.snapshot.JdbcSnapshotStore.{ SerializationResult, Serialized }
 import akka.stream.Materializer
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import slick.jdbc.JdbcBackend
 
 import scala.concurrent.{ ExecutionContext, Future }

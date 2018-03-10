@@ -16,9 +16,9 @@
 
 name := "akka-persistence-jdbc"
 
-organization := "com.github.dnvriend"
+organization := "com.dnemov"
 
-version := "2.3.3"
+version := "2.3.3.0"
 
 isSnapshot := true
 
@@ -27,16 +27,15 @@ resolvers += Resolver.typesafeRepo("releases")
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= {
-  val akkaVersion = "2.4.7"
-  val slickVersion = "3.1.1"
-  val hikariCPVersion = "2.4.6"
+  val akkaVersion = "2.4.19"
+  val slickVersion = "3.2.2"
+  val hikariCPVersion = "2.7.8"
   Seq(
     "com.typesafe.akka" %% "akka-actor" % akkaVersion,
     "com.typesafe.akka" %% "akka-persistence" % akkaVersion,
     "com.typesafe.akka" %% "akka-persistence-query-experimental" % akkaVersion,
     "com.typesafe.akka" %% "akka-stream" % akkaVersion,
     "com.typesafe.slick" %% "slick" % slickVersion,
-    "com.typesafe.slick" %% "slick-extensions" % "3.1.0",
     "com.typesafe.slick" %% "slick-hikaricp" % slickVersion exclude("com.zaxxer", "HikariCP-java6"),
     "com.zaxxer" % "HikariCP" % hikariCPVersion,
     "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % Test,
@@ -88,8 +87,8 @@ SbtScalariform.autoImport.scalariformPreferences := SbtScalariform.autoImport.sc
 import de.heikoseeberger.sbtheader.license.Apache2_0
 
 headers := Map(
-  "scala" -> Apache2_0("2016", "Dennis Vriend"),
-  "conf" -> Apache2_0("2016", "Dennis Vriend", "#")
+  "scala" -> Apache2_0("2018", "Dmitry Nemov"),
+  "conf" -> Apache2_0("2018", "Dmitry Nemov", "#")
 )
 
 // build info configuration //

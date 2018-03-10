@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package akka.persistence.jdbc.dao.bytea
 
 import SnapshotTables.SnapshotRow
 import akka.persistence.jdbc.config.SnapshotTableConfiguration
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 class SnapshotQueries(val profile: JdbcProfile, override val snapshotTableCfg: SnapshotTableConfiguration) extends SnapshotTables {
   import profile.api._

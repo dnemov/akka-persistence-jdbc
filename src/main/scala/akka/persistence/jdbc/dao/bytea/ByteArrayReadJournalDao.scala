@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import akka.persistence.jdbc.dao.bytea.ReadJournalTables.JournalRow
 import akka.persistence.jdbc.serialization.{ SerializationResult, Serialized }
 import akka.stream.Materializer
 import akka.stream.scaladsl.Source
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 import slick.jdbc.GetResult
 import slick.jdbc.JdbcBackend._
 
@@ -45,8 +45,8 @@ class ByteArrayReadJournalDao(db: Database, val profile: JdbcProfile, readJourna
     Source.fromPublisher(db.stream(queries.allPersistenceIdsDistinct(max).result))
 
   override def allPersistenceIdsSource(max: Long): Source[String, NotUsed] = profile match {
-    case com.typesafe.slick.driver.oracle.OracleDriver ⇒ oracleAllPersistenceIds(max)
-    case _                                             ⇒ defaultAllPersistenceIds(max)
+    case slick.jdbc.OracleProfile ⇒ oracleAllPersistenceIds(max)
+    case _                        ⇒ defaultAllPersistenceIds(max)
   }
 
   implicit val getJournalRow = GetResult(r ⇒ JournalRow(r.<<, r.<<, r.nextBytes(), r.<<, r.<<))
@@ -79,8 +79,8 @@ class ByteArrayReadJournalDao(db: Database, val profile: JdbcProfile, readJourna
       .map(row ⇒ Serialized(row.persistenceId, row.sequenceNumber, row.message, row.tags, row.created))
 
   override def eventsByTag(tag: String, offset: Long, max: Long): Source[SerializationResult, NotUsed] = profile match {
-    case com.typesafe.slick.driver.oracle.OracleDriver ⇒ oracleEventsByTag(tag, offset, max)
-    case _                                             ⇒ defaultEventsByTag(tag, offset, max)
+    case slick.jdbc.OracleProfile ⇒ oracleEventsByTag(tag, offset, max)
+    case _                        ⇒ defaultEventsByTag(tag, offset, max)
   }
 
   override def messages(persistenceId: String, fromSequenceNr: Long, toSequenceNr: Long, max: Long): Source[SerializationResult, NotUsed] =

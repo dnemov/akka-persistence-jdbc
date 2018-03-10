@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.3")
+
 // to format scala source code
 // see: https://github.com/sbt/sbt-scalariform
 addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")

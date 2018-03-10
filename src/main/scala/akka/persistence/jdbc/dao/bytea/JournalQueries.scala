@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package akka.persistence.jdbc.dao.bytea
 import akka.persistence.jdbc.dao.bytea.JournalTables.{ JournalDeletedToRow, JournalRow }
 import akka.persistence.jdbc.config.{ DeletedToTableConfiguration, JournalTableConfiguration }
 import akka.persistence.jdbc.serialization.{ SerializationResult, Serialized }
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 class JournalQueries(val profile: JdbcProfile, override val journalTableCfg: JournalTableConfiguration, override val deletedToTableCfg: DeletedToTableConfiguration) extends JournalTables {
 

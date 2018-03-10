@@ -17,7 +17,7 @@
 package akka.persistence.jdbc.dao.bytea
 
 import akka.persistence.jdbc.dao.TablesTestSpec
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 class JournalTablesTest extends TablesTestSpec {
 
@@ -25,7 +25,7 @@ class JournalTablesTest extends TablesTestSpec {
   val deletedToTableConfiguration = journalConfig.deletedToTableConfiguration
 
   object TestByteAJournalTables extends JournalTables {
-    override val profile: JdbcProfile = slick.driver.PostgresDriver
+    override val profile: JdbcProfile = slick.jdbc.PostgresProfile
     override val journalTableCfg = journalTableConfiguration
     override val deletedToTableCfg = deletedToTableConfiguration
   }

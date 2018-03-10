@@ -17,14 +17,14 @@
 package akka.persistence.jdbc.dao.bytea
 
 import akka.persistence.jdbc.dao.TablesTestSpec
-import slick.driver.JdbcProfile
+import slick.jdbc.JdbcProfile
 
 class ReadJournalTablesTest extends TablesTestSpec {
 
   val readJournalTableConfiguration = readJournalConfig.journalTableConfiguration
 
   object TestByteAReadJournalTables extends ReadJournalTables {
-    override val profile: JdbcProfile = slick.driver.PostgresDriver
+    override val profile: JdbcProfile = slick.jdbc.PostgresProfile
     override val journalTableCfg = readJournalTableConfiguration
   }
 

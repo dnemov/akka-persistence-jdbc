@@ -15,19 +15,19 @@
  */
 
 // enable publishing to jcenter
-homepage := Some(url("https://github.com/dnvriend/demo-akka-persistence-jdbc"))
+homepage := Some(url("https://github.com/dnemov/akka-persistence-jdbc"))
 
 pomIncludeRepository := (_ => false)
 
 pomExtra := <scm>
-  <url>https://github.com/dnvriend/demo-akka-persistence-jdbc</url>
-  <connection>scm:git@github.com:dnvriend/demo-akka-persistence-jdbc.git</connection>
+  <url>https://github.com/dnemov/demo-akka-persistence-jdbc</url>
+  <connection>scm:git@github.com:dnemov/demo-akka-persistence-jdbc.git</connection>
 </scm>
   <developers>
     <developer>
-      <id>dnvriend</id>
-      <name>Dennis Vriend</name>
-      <url>https://github.com/dnvriend</url>
+      <id>dnemov</id>
+      <name>Dmitry Nemov</name>
+      <url>https://github.com/dnemov</url>
     </developer>
   </developers>
 
@@ -37,8 +37,8 @@ bintrayPackageLabels := Seq("akka", "persistence", "jdbc")
 
 bintrayPackageAttributes ~=
   (_ ++ Map(
-    "website_url" -> Seq(bintry.Attr.String("https://github.com/dnvriend/demo-akka-persistence-jdbc")),
-    "github_repo" -> Seq(bintry.Attr.String("https://github.com/dnvriend/akka-persistence-jdbc.git")),
-    "issue_tracker_url" -> Seq(bintry.Attr.String("https://github.com/dnvriend/akka-persistence-jdbc/issues/"))
+    "website_url" -> Seq(bintry.Attr.String("https://github.com/dnemov/demo-akka-persistence-jdbc")),
+    "github_repo" -> Seq(bintry.Attr.String("https://github.com/dnemov/akka-persistence-jdbc.git")),
+    "issue_tracker_url" -> Seq(bintry.Attr.String("https://github.com/dnemov/akka-persistence-jdbc/issues/"))
     )
   )

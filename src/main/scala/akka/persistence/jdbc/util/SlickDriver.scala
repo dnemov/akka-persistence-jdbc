@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +20,20 @@ import javax.naming.InitialContext
 
 import akka.persistence.jdbc.config.SlickConfiguration
 import com.typesafe.config.Config
-import slick.backend.DatabaseConfig
-import slick.driver.JdbcProfile
+import slick.basic.DatabaseConfig
+import slick.jdbc.JdbcProfile
 import slick.jdbc.JdbcBackend._
 
 object SlickDriver {
   def forDriverName(config: Config): JdbcProfile =
-    DatabaseConfig.forConfig[JdbcProfile]("slick", config).driver
+    DatabaseConfig.forConfig[JdbcProfile]("slick", config).profile
+  val maxConnections: Option[Int] = Some(1)
 }
 
 object SlickDatabase {
   def forConfig(config: Config, slickConfiguration: SlickConfiguration): Database = {
     if (slickConfiguration.jndiName.isDefined)
-      Database.forName(slickConfiguration.jndiName.get)
+      Database.forName(slickConfiguration.jndiName.get, Some(1))
     else if (slickConfiguration.jndiDbName.isDefined)
       new InitialContext().lookup(slickConfiguration.jndiDbName.get).asInstanceOf[Database]
     else Database.forConfig("slick.db", config)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ object JournalTables {
 }
 
 trait JournalTables {
-  val profile: slick.driver.JdbcProfile
+  val profile: slick.jdbc.JdbcProfile
 
   import profile.api._
 

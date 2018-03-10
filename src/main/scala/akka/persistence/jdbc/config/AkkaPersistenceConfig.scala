@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Dennis Vriend
+ * Copyright 2018 Dmitry Nemov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import scala.concurrent.duration.{ FiniteDuration, _ }
 
 class SlickConfiguration(config: Config) {
   private val cfg = config.asConfig("slick")
-  val slickDriver: String = cfg.as[String]("driver", "slick.driver.PostgresDriver$")
+  val slickDriver: String = cfg.as[String]("driver", "slick.jdbc.PostgresProfile$")
   val jndiName: Option[String] = cfg.as[String]("jndiName").trim
   val jndiDbName: Option[String] = cfg.as[String]("jndiDbName")
   override def toString: String = s"SlickConfiguration($slickDriver,$jndiName,$jndiDbName)"
